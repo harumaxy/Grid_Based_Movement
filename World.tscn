@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/FPS.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 32 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 32, 32 )
+
+[node name="World" type="Node"]
+
+[node name=" Player" type="Area2D" parent="."]
+position = Vector2( 8, 0 )
+script = ExtResource( 1 )
+speed = 5
+
+[node name="Sprite" type="Sprite" parent=" Player"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent=" Player"]
+shape = SubResource( 1 )
+
+[node name="RayCast2D" type="RayCast2D" parent=" Player"]
+
+[node name="Tween" type="Tween" parent=" Player"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent=" Player"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 64, 192 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite2" type="Sprite" parent="StaticBody2D"]
+self_modulate = Color( 0.160784, 0.964706, 0.568627, 1 )
+position = Vector2( 32, 32 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 32, 32 )
+shape = SubResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="FPS" type="Label" parent="CanvasLayer"]
+margin_left = 192.0
+margin_top = 128.0
+margin_right = 232.0
+margin_bottom = 142.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
